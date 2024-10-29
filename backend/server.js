@@ -1,9 +1,9 @@
 import express from 'express';
 //const cors = require('cors');
-import sequelize from './src/config/config/connection.js';
+import sequelize from './src/config/connection.js';
 import 'dotenv/config';
 import userRoutes from './src/routes/userRoutes.js';
-import movieRoutes from './src/routes/movieRoutes.js';
+//import movieRoutes from './src/routes/movieRoutes.js';
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
-app.use('/api', movieRoutes);
+//app.use('/api', movieRoutes);
 
 sequelize.sync().then(() => {
   app.listen(process.env.PORT || 5000, () => {

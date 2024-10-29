@@ -1,4 +1,4 @@
-import User from '../../../models/user.js';
+import User from '../models/user.js';
 import bcrypt from 'bcrypt'; // Assuming bcrypt is used for password comparison
 
 const login = async (req, res) => {

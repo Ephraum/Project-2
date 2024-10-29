@@ -1,6 +1,6 @@
 // Enable access to .env variables
 import 'dotenv/config';
- //dotenv.config();
+dotenv.config();
 
 import { Sequelize } from 'sequelize';
 
