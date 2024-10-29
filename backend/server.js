@@ -1,11 +1,11 @@
 import express from 'express';
-//const cors = require('cors');
+import cors from 'cors';
 import sequelize from './src/config/connection.js';
 import 'dotenv/config';
 import userRoutes from './src/routes/userRoutes.js';
 //import movieRoutes from './src/routes/movieRoutes.js';
 
-dotenv.config();
+// dotenv.config();
 
 const app = express();
 app.use(cors());

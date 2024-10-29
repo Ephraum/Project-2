@@ -1,5 +1,15 @@
 import User from '../models/user.js';
-import bcrypt from 'bcrypt'; // Assuming bcrypt is used for password comparison
+import bcrypt from 'bcrypt'; 
+const register = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const newUser = await User.create({ email, password: hashedPassword });
+    return res.status(201).json(newUser);
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -8,11 +18,9 @@ const login = async (req, res) => {
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    // Add additional logic here if needed
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-// Export the login function if needed
-export { login };
+export { register, login };
