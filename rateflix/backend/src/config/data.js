@@ -1,14 +1,13 @@
 // Enable access to .env variables
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
+ //dotenv.config();
 
-// Your existing connection logic
 import { Sequelize } from 'sequelize';
 
 // Create a connection object
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
-  : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', process.env.DB_PASSWORD || '', {
+  : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', process.env.DB_PASSWORD, {
       host: 'localhost',
       dialect: 'postgres',
       dialectOptions: {
@@ -17,3 +16,4 @@ const sequelize = process.env.DB_URL
     });
 
 export default sequelize;
+  

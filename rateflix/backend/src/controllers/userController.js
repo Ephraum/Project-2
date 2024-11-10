@@ -1,6 +1,5 @@
 import User from '../models/user.js';
-import bcrypt from 'bcrypt';
-
+import bcrypt from 'bcrypt'; 
 const register = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -19,7 +18,6 @@ const login = async (req, res) => {
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    return res.status(200).json({ message: 'Login successful' });
   } catch (error) {
     return res.status(500).json({ error: 'Internal server error' });
   }
